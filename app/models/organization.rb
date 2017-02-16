@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 class Organization < ActiveRecord::Base
+  has_many :models
+
   enum organization_type: [:show_room, :service, :dealer]
   enum pricing_policy: [:flexible, :fixed, :prestige]
 
