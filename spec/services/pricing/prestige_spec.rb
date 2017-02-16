@@ -21,5 +21,41 @@ RSpec.describe Pricing::Prestige, type: :service do
           with('http://www.yourlocalguardian.co.uk/sport/rugby/rss/')
       end
     end
+
+    context 'Count epub date' do
+      fake_html = <<-EOS
+        <rss version="2.0"
+            xmlns:atom="http://www.w3.org/2005/Atom">
+          <item>
+            <pubDate>Thu, 13 Oct 2016 15:56:26 +0100</pubDate>
+          </item>
+          <item>
+            <pubDate>Thu, 13 Oct 2016 15:56:26 +0100</pubDate>
+          </item>
+        </rss>
+      EOS
+      it do
+        allow(subject).to receive(:open).
+          with('http://www.yourlocalguardian.co.uk/sport/rugby/rss/').
+          and_return(fake_html)
+        expect(subject.margin).to equal(2)
+      end
+    end
+
+    context 'Count epub date' do
+      fake_html = <<-EOS
+        <rss version="2.0"
+          xmlns:atom="http://www.w3.org/2005/Atom">
+        <item>
+        <item>
+      </rss>
+      EOS
+      it do
+        allow(subject).to receive(:open).
+          with('http://www.yourlocalguardian.co.uk/sport/rugby/rss/').
+          and_return(fake_html)
+        expect(subject.margin).to equal(0)
+      end
+    end
   end
 end
