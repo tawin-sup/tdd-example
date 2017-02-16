@@ -5,7 +5,7 @@ module Pricing
   class Base
     def margin
       page = Nokogiri::HTML(open(self.class::BASE_URL))
-      response = parse_body(page)
+      parse_body(page)
     end
 
     protected def parse_body(response)
