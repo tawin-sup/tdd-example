@@ -40,6 +40,18 @@ RSpec.describe ModelTypesController, type: :request do
         end
       end
     end
+
+    context 'not found' do
+      before do
+        get '/models/test/model_types',
+             nil,
+             Authorization: 'Token token="123"'
+      end
+
+      it do
+        expect(response).to have_http_status(:not_found)
+      end
+    end
   end
 
   describe '#show' do
@@ -76,13 +88,24 @@ RSpec.describe ModelTypesController, type: :request do
           end
         end
 
-        it 'return model_types for model' do
+        it do
           VCR.use_cassette('prestige') do
             expect(response).to match_response_schema("model_type")
           end
         end
       end
 
+      context 'not found' do
+        before do
+          post "/models/test/model_types_price/test",
+               nil,
+               Authorization: 'Token token="123"'
+        end
+
+        it do
+          expect(response).to have_http_status(:not_found)
+        end
+      end
     end
   end
 end
