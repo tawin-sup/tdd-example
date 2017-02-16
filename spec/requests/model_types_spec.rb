@@ -44,8 +44,8 @@ RSpec.describe ModelTypesController, type: :request do
     context 'not found' do
       before do
         get '/models/test/model_types',
-             nil,
-             Authorization: 'Token token="123"'
+            nil,
+            Authorization: 'Token token="123"'
       end
 
       it do
