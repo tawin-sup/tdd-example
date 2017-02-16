@@ -15,5 +15,15 @@ FactoryGirl.define do
     factory :model_in_prestige do
       association :organization, factory: :prestige_organization
     end
+
+    factory :model_with_model_types do
+      association :organization, factory: :prestige_organization
+      after(:create) do |model|
+        create(:model_type, model: model)
+        create(:model_type, model: model)
+        create(:model_type, model: model)
+        create(:model_type, model: model)
+      end
+    end
   end
 end

@@ -8,37 +8,36 @@ RSpec.describe ModelTypesController, type: :request do
 
   describe '#index' do
     context 'authentication' do
-      let!(:model) { create(:model_in_prestige) }
-      let!(:model_type_1) { create(:model_type) }
-      let!(:model_type_2) { create(:model_type) }
+      let!(:model) { create(:model_with_model_types) }
 
       it 'should return authorization' do
-        get "/models/#{model.model_slug}/model_types", nil, Authorization: 'Token token="123"'
-        expect(response).to have_http_status(:ok)
+        VCR.use_cassette('prestige') do
+          get "/models/#{model.model_slug}/model_types", nil, Authorization: 'Token token="123"'
+          expect(response).to have_http_status(:ok)
+        end
       end
 
       it 'should return unauthorization' do
-        get "/models/#{model.model_slug}/model_types", nil, Authorization: 'Token token="321"'
-        expect(response).to have_http_status(:unauthorized)
+        VCR.use_cassette('prestige') do
+          get "/models/#{model.model_slug}/model_types", nil, Authorization: 'Token token="321"'
+          expect(response).to have_http_status(:unauthorized)
+        end
       end
     end
 
     context 'return model_types' do
-      let!(:model) { create(:model_in_prestige) }
-      let!(:model_type_1) { create(:model_type) }
-      let!(:model_type_2) { create(:model_type) }
-      let!(:model_type_3) { create(:model_type) }
+      let!(:model) { create(:model_with_model_types) }
 
       before do
-        model_type_1.model = model
-        model_type_2.model = model
-        model_type_3.model = model
-        get "/models/#{model.model_slug}/model_types", nil, Authorization: 'Token token="123"'
+        VCR.use_cassette('prestige') do
+          get "/models/#{model.model_slug}/model_types", nil, Authorization: 'Token token="123"'
+        end
       end
 
-
       it 'return model_types for model' do
-        expect(response).to match_response_schema("model")
+        VCR.use_cassette('prestige') do
+          expect(response).to match_response_schema("model")
+        end
       end
     end
   end
