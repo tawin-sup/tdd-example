@@ -13,8 +13,8 @@ module Pricing
       count_pub_date(response)
     end
 
-    private def count_pub_date(_response)
-      -1
+    private def count_pub_date(response)
+      response.count
     end
 
     private def parse_body(response)
