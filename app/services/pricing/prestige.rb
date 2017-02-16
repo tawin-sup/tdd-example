@@ -13,6 +13,10 @@ module Pricing
       count_pub_date(response)
     end
 
+    def total_price
+      @base_price + margin
+    end
+
     private def count_pub_date(response)
       response.count
     end
