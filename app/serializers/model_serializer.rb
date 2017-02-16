@@ -1,10 +1,10 @@
 # frozen_string_literal: true
-class ModelsSerializer < ActiveModelSerializers
+class ModelSerializer < ActiveModel::Serializer
   attributes :name, :model_types
 
   def model_types
     object.model_types.map do |model_type|
-      Model::ModelTypesSerializer.new(model_type)
+      ModelEntry::ModelTypeSerializer.new(model_type)
     end
   end
 end

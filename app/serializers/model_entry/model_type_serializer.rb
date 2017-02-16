@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-module Model
-  class ModelTypesSerializer < ActiveModelSerializers
+module ModelEntry
+  class ModelTypeSerializer < ActiveModel::Serializer
     attributes :name, :total_price
   end
 end
