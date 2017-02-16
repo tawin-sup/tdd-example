@@ -53,4 +53,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  resources :models, only: [], param: :slug do
+    resources :model_types, only: [:index]
+  end
+
+  post '/models/:model_slug/model_types_price/:model_type_slug', to: 'model_types#show', as: 'model_types_show'
+
 end
