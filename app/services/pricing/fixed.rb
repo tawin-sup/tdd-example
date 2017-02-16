@@ -12,7 +12,7 @@ module Pricing
     end
 
     private def count_status(_response)
-      -1
+      _response.scan(/\bstatus\b/i).count
     end
   end
 end
