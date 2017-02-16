@@ -21,5 +21,7 @@ RSpec.describe Pricing::Flexible, type: :service do
             with('http://www.reuters.com')
       end
     end
+
+
   end
 end
