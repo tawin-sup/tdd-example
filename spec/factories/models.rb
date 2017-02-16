@@ -2,7 +2,7 @@
 FactoryGirl.define do
   factory :model do
     name { Faker::Company.name }
-    model_slug { Faker::Company.name.underscore }
+    model_slug { Faker::Internet.slug(Faker::Company.name, '_') }
 
     factory :model_in_fixed do
       association :organization, factory: :fixed_organization
