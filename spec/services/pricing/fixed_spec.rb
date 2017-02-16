@@ -104,4 +104,11 @@ RSpec.describe Pricing::Fixed, type: :service do
       end
     end
   end
+
+  describe '#total_price' do
+    it 'use base_price + margin' do
+      allow(subject).to receive(:margin).and_return(20)
+      expect(subject.total_price).to equal(base_price + 20)
+    end
+  end
 end
