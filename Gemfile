@@ -33,6 +33,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 gem 'figaro'
 
+gem 'active_model_serializers'
+
 group :development, :test do
   gem 'pry-byebug'
 
