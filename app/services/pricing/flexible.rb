@@ -12,6 +12,10 @@ module Pricing
       number_a / 100.00
     end
 
+    def total_price
+      @base_price * margin
+    end
+
     private def count_a(_response)
       _response.count('a')
     end
