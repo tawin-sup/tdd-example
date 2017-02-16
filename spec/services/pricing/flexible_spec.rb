@@ -48,7 +48,7 @@ RSpec.describe Pricing::Flexible, type: :service do
         allow(subject).to receive(:open).
           with('http://www.reuters.com').
           and_return(fake_html)
-        expect(subject.margin).to equal(3/100.00)
+        expect(subject.margin).to equal(3 / 100.00)
       end
     end
 
