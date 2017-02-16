@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe ModelType, type: :model do
+  # Association
+  it { is_expected.to belong_to(:model) }
+
   # Validation
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:model_type_slug) }

@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
+  # Association
+  it { is_expected.to have_many(:models) }
+
   # Define Enum
   it { is_expected.to define_enum_for(:organization_type).with([:show_room, :service, :dealer]) }
   it { is_expected.to define_enum_for(:pricing_policy).with([:flexible, :fixed, :prestige]) }
