@@ -1,0 +1,4 @@
+default: &default
+  ACCESS_TOKEN: '123'
+development:
+  <<: *default
