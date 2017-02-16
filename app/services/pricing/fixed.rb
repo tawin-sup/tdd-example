@@ -6,5 +6,8 @@ module Pricing
       @base_price
     end
 
+    def margin
+    end
+
   end
 end
