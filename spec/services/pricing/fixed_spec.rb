@@ -15,12 +15,11 @@ RSpec.describe Pricing::Fixed, type: :service do
     it 'opens github url' do
       VCR.use_cassette('github') do
         allow(subject).to receive(:open).
-            with('https://developer.github.com/v3/#http-redirects')
+          with('https://developer.github.com/v3/#http-redirects')
         subject.margin
         expect(subject).to have_received(:open).
-            with('https://developer.github.com/v3/#http-redirects')
+          with('https://developer.github.com/v3/#http-redirects')
       end
     end
   end
-
 end

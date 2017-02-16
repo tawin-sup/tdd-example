@@ -1,13 +1,18 @@
 # frozen_string_literal: true
 module Pricing
   class Fixed < Base
+    BASE_URL = 'https://developer.github.com/v3/#http-redirects'
 
-    def initialize(base_price)
+    def initialize(_base_price)
       @base_price
     end
 
     def margin
+      count_status(super)
     end
 
+    private def count_status(_response)
+      -1
+    end
   end
 end
