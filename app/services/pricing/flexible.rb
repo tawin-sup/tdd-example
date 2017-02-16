@@ -13,8 +13,7 @@ module Pricing
     end
 
     private def count_a(_response)
-      -1
+      _response.count('a')
     end
-
   end
 end
